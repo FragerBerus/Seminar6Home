@@ -8,22 +8,29 @@ Console.Clear();
 int size = 1;
 Console.Write("Введите целое положительное десятичное число: ");
 int number = Convert.ToInt32(Console.ReadLine());
-Console.Write($"Десятичное число {number} ");
-int count = number;
-while (number > 1)
+if (0 < number)
 {
-    number = number / 2;
-    size = size + 1;
+    Console.WriteLine($"Десятичное число {number} ");
+    int count = number;
+    while (number > 1)
+    {
+        number = number / 2;
+        size = size + 1;
+    }
+    int[] BinaryNumber = new int[size];
+    size = size - 1;
+    for (int i = 0; i <= size; i++)
+    {
+        BinaryNumber[size - i] = count % 2;
+        count = count / 2;
+    }
+    Console.Write("соответствует двоичному числу ");
+    for (int i = 0; i <= size; i++)
+    {
+        Console.Write($"{BinaryNumber[i]}");
+    }
 }
-int[] BinaryNumber = new int[size];
-size = size - 1;
-for (int i = 0; i <= size; i++)
+else
 {
-    BinaryNumber[size - i] = count % 2;
-    count = count / 2;
-}
-Console.Write("соответствует двоичному числу ");
-for (int i = 0; i <= size; i++)
-{
-    Console.Write($"{BinaryNumber[i]} ");
+    Console.WriteLine("Введенное число не соответствует условию задачи!!!");
 }
